@@ -14,6 +14,16 @@ pipeline {
         checkout scm
       }
     }
+    stage('terraform-init') {
+      steps {
+        sh 'terraform init'
+      }
+    }
+    stage('terraform-plann') {
+      steps {
+        sh 'terraform plan'
+      }
+    }
     stage('terraform') {
       steps {
         sh 'terraform apply -auto-approve'
